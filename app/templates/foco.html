@@ -1,0 +1,49 @@
+{%extends 'base.html' %}
+{% block content %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <div class="container" >
+
+    <a class="links" id="cadastro_user"></a>
+
+
+    <div class="content">
+        <div id="login">
+      <form action = "{{ url_for('addfoco') }}" method = "POST" enctype="multipart/form-data">
+         {{ formulario.csrf_token }}
+         <h3>Cadastrar Foco</h3>
+         Lat<br>
+         <input type = "text" name = "latitude" value={{ latitude }}></br>
+
+         Long<br>
+         <input type = "text" name = "longitude" value={{ longitude }}><br>
+
+             <div class="form-group">
+            <label>Data Inicial</label>
+		    {{ formulario.data_inicio(class="form-control", type="date") }}
+            </div>
+
+            <div class="form-group">
+            <label>Data Final</label>
+		    {{ formulario.data_fim(class="form-control", type="date") }}
+            </div>
+
+            <div class="form-group">
+            <label>Descrição</label>
+		    {{ formulario.descricao(class="form-control", placeholder="Escreva mais informações..." ) }}
+            </div>
+
+
+            <div class="form-group">
+            <label>Foto</label>
+		   {{ formulario.foto(class="form-control") }}
+            </div>
+
+
+
+         <input type = "submit" value = "Cadastrar" /><br>
+      </form>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
